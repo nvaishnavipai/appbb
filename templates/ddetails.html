@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sample Data Table</title>
+<style>
+  body {
+    background-color: #ffcccc;
+    font-family: Arial, sans-serif;
+  }
+  table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    color: #bd4343;
+  }
+  th {
+    background-color: #f7f7f7;
+  }
+  .action-btn {
+    padding: 5px 7px; /* Adjusted button padding */
+    margin: 2px;
+    border: none;
+    cursor: pointer;
+    font-size: 12px; /* Adjusted button font size */
+  }
+  .delete-btn {
+    background-color: #ff4d4d;
+  }
+  .edit-btn {
+    background-color: #ffcc00;
+  }
+  .update-btn {
+    background-color: #4CAF50;
+  }
+</style>
+</head>
+<body>
+
+<table id="data-table">
+  <tr>
+    <th>Name</th>
+    <th>Phone Number</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Country</th>
+    <th>Blood Group</th>
+    <th>Gender</th>
+    <th>Actions</th>
+  </tr>
+  <!-- Sample data rows will be inserted here -->
+</table>
+
+<script>
+// Sample data array
+/*var data = [
+  { Name: "Vaishnavi Pai", "Phone Number": "1234567890", City: "Mumbai", State: "Maharashtra", Country: "India", "Blood Group": "A+", Gender: "Female" },
+  { Name: "Venkataramana Pai", "Phone Number": "9876543210", City: "Bangalore", State: "Karnataka", Country: "India", "Blood Group": "B-", Gender: "Male" },
+  { Name: "Shreya S B", "Phone Number": "9876123450", City: "Chennai", State: "Tamil Nadu", Country: "India", "Blood Group": "O+", Gender: "Female" },
+  { Name: "Vikas", "Phone Number": "123456789123", City: "Delhi", State: "Delhi", Country: "India", "Blood Group": "AB+", Gender: "Male" },
+  { Name: "Tanmay", "Phone Number": "07998712344", City: "Mountain View", State: "California", Country: "USA", "Blood Group": "O+", Gender: "Male" },
+  { Name: "Radha", "Phone Number": "01635237018", City: "Jessore", State: "Jessore", Country: "Bangladesh", "Blood Group": "B+", Gender: "Female" },
+  { Name: "Ravi Kumar", "Phone Number": "9876543211", City: "Hyderabad", State: "Telangana", Country: "India", "Blood Group": "B+", Gender: "Male" },
+  { Name: "Priya Sharma", "Phone Number": "9012345678", City: "Lucknow", State: "Uttar Pradesh", Country: "India", "Blood Group": "O-", Gender: "Female" },
+  { Name: "Suresh Patel", "Phone Number": "7890123456", City: "Ahmedabad", State: "Gujarat", Country: "India", "Blood Group": "A-", Gender: "Male" },
+  { Name: "Deepa Singh", "Phone Number": "8765432109", City: "Chandigarh", State: "Punjab", Country: "India", "Blood Group": "AB+", Gender: "Female" },
+  { Name: "Naveen Reddy", "Phone Number": "7654321098", City: "Bangalore", State: "Karnataka", Country: "India", "Blood Group": "O+", Gender: "Male" },
+  { Name: "Kavita Gupta", "Phone Number": "6543210987", City: "Jaipur", State: "Rajasthan", Country: "India", "Blood Group": "A+", Gender: "Female" },
+  { Name: "Arjun Das", "Phone Number": "5432109876", City: "Kolkata", State: "West Bengal", Country: "India", "Blood Group": "B-", Gender: "Male" },
+  { Name: "Latha Nair", "Phone Number": "4321098765", City: "Thiruvananthapuram", State: "Kerala", Country: "India", "Blood Group": "O+", Gender: "Female" },
+  { Name: "Aruna Rao", "Phone Number": "3210987654", City: "Chennai", State: "Tamil Nadu", Country: "India", "Blood Group": "AB-", Gender: "Female" },
+  { Name: "Vijay Kumar", "Phone Number": "2109876543", City: "Delhi", State: "Delhi", Country: "India", "Blood Group": "A+", Gender: "Male" },
+  { Name: "Rajesh Singh", "Phone Number": "1098765432", City: "Srinagar", State: "Jammu and Kashmir", Country: "India", "Blood Group": "O-", Gender: "Male" },
+  { Name: "Meera Kapoor", "Phone Number": "0987654321", City: "Agra", State: "Uttar Pradesh", Country: "India", "Blood Group": "B+", Gender: "Female" },
+  { Name: "Alok Verma", "Phone Number": "9876543210", City: "Gurugram", State: "Haryana", Country: "India", "Blood Group": "AB+", Gender: "Male" },
+  { Name: "Vijaya Lakshmi", "Phone Number": "8765432109", City: "Visakhapatnam", State: "Andhra Pradesh", Country: "India", "Blood Group": "O+", Gender: "Female" },
+  { Name: "Sachin Tiwari", "Phone Number": "7654321098", City: "Patna", State: "Bihar", Country: "India", "Blood Group": "A-", Gender: "Male" },
+  { Name: "Pooja Sharma", "Phone Number": "6543210987", City: "Noida", State: "Uttar Pradesh", Country: "India", "Blood Group": "B+", Gender: "Female" }
+];*/
+
+// Function to render the table with data
+function renderTable() {
+  var table = document.getElementById('data-table');
+  // Clear existing table rows except the header
+  table.innerHTML = table.rows[0].outerHTML; // Use outerHTML to preserve the header row
+  // Populate table with data
+  data.forEach(function(item, index) {
+    var row = table.insertRow();
+    Object.values(item).forEach(function(value) {
+      var cell = row.insertCell();
+      cell.textContent = value;
+    });
+    // Add action buttons
+    var actionCell = row.insertCell();
+    actionCell.innerHTML = '<button class="action-btn delete-btn">Delete</button>' +
+                           '<button class="action-btn edit-btn">Edit</button>' +
+                           '<button class="action-btn update-btn">Update</button>';
+  });
+}
+
+// Function to handle delete action
+function handleDelete(event) {
+  var rowIndex = event.target.closest('tr').rowIndex;
+  data.splice(rowIndex - 1, 1); // Subtract 1 to account for the header row
+  renderTable();
+}
+
+// Function to handle edit action
+function handleEdit(event) {
+  var rowIndex = event.target.closest('tr').rowIndex;
+  // Example: Get the data of the row and populate a form for editing
+  var rowData = data[rowIndex - 1]; // Subtract 1 to account for the header row
+  console.log('Edit data:', rowData);
+}
+
+// Function to handle update action
+function handleUpdate(event) {
+  var rowIndex = event.target.closest('tr').rowIndex;
+  // Example: Update the data in the array and re-render the table
+  var newData = { /* Updated data object */ };
+  data[rowIndex - 1] = newData; // Subtract 1 to account for the header row
+  renderTable();
+}
+
+// Call the function to render the table initially
+renderTable();
+
+// Add event listeners to action buttons
+document.querySelectorAll('.delete-btn').forEach(button => {
+    button.addEventListener('click', handleDelete);
+});
+
+document.querySelectorAll('.edit-btn').forEach(button => {
+    button.addEventListener('click', handleEdit);
+});
+
+document.querySelectorAll('.update-btn').forEach(button => {
+    button.addEventListener('click', handleUpdate);
+});
+</script>
+
+</body>
+</html>

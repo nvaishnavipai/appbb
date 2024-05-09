@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eligibility Criteria</title>
+<style>
+  body {
+    font-family:Montserrat;
+    background-color: #ffcccc;
+    margin: 0;
+    padding: 20px;
+  }
+  .title-box {
+    background-color: #bd4343; /* dark pale red */
+    color: white;
+    text-align: left;
+    margin-bottom: 10px;
+	scale:756.824pm 27.368pm;
+  }
+  .criteria-box {
+    background-color: rgba(255, 255, 255, 0.7); /* white transparent */
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  .submit-button {
+    margin: 5px;
+    padding: 8px 15px; /* Reduced padding */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+  }
+  .submit-button button:hover {
+    background-color: #45a049;
+  }
+
+</style>
+<script>
+function toggleCheckbox(checkbox) {
+  var checkboxes = document.getElementsByName(checkbox.name);
+  checkboxes.forEach((item) => {
+    if (item !== checkbox) item.checked = false;
+  });
+}
+</script>
+</head>
+<body>
+<div class="title-box">
+  <h2>Eligibility Criteria</h2>
+</div>
+<form action="{{ url_for('elicri') }}" method="POST" name="Eligibility">
+  <div class="criteria-box">
+    <input type="checkbox" id="Haemoglobin level-yes" name="Haemoglobin level" onclick="toggleCheckbox(this);">
+    <label for="Haemoglobin level-yes">Yes</label>
+    <input type="checkbox" id="Haemoglobin level-no" name="Haemoglobin level" onclick="toggleCheckbox(this);">
+    <label for="Haemoglobin level-no">No</label>
+    - Haemoglobin level: Must have a blood haemoglobin level of more than 12.5 g/dl.
+  </div>
+  <div class="criteria-box">
+    <input type="checkbox" id="Heart rate-yes" name="Heart rate" onclick="toggleCheckbox(this);">
+    <label for="Heart rate-yes">Yes</label>
+    <input type="checkbox" id="Heart rate-no" name="Heart rate" onclick="toggleCheckbox(this);">
+    <label for="Heart rate-no">No</label>
+    - Heart rate: Should be between 50-100 bpm and regular.
+  </div>
+  <div class="criteria-box">
+    <input type="checkbox" id="Blood pressure-yes" name="Blood pressure" onclick="toggleCheckbox(this);">
+    <label for="Blood pressure-yes">Yes</label>
+    <input type="checkbox" id="Blood pressure-no" name="Blood pressure" onclick="toggleCheckbox(this);">
+    <label for="Blood pressure-no">No</label>
+    - Blood pressure: Systolic BP should be between 100-180 mm Hg and Diastolic between 50-100 mm Hg.
+  </div>
+  <div class="criteria-box">
+    <input type="checkbox" id="Weight-yes" name="Weight" onclick="toggleCheckbox(this);">
+    <label for="Weight-yes">Yes</label>
+    <input type="checkbox" id="Weight-no" name="Weight" onclick="toggleCheckbox(this);">
+    <label for="Weight-no">No</label>
+    - Weight: Must weigh at least 50 kgs.
+  </div>
+  <div class="criteria-box">
+    <input type="checkbox" id="General health-yes" name="General health" onclick="toggleCheckbox(this);">
+    <label for="General health-yes">Yes</label>
+    <input type="checkbox" id="General health-no" name="General health" onclick="toggleCheckbox(this);">
+    <label for="General health-no">No</label>
+    - General health: Must be in good general health and should not have any underlying health issues such as diabeties etc.
+  </div>
+  <div class="criteria-box">
+    <input type="checkbox" id="Nutrition-yes" name="Nutrition" onclick="toggleCheckbox(this);">
+    <label for="Nutrition-yes">Yes</label>
+    <input type="checkbox" id="Nutrition-no" name="Nutrition" onclick="toggleCheckbox(this);">
+    <label for="Nutrition-no">No</label>
+    - Nutrition: Eat within two hours before donation and drink plenty of water on the day and 24 to 48 hours beforehand.
+  </div>
+  <div class="criteria-box">
+    <input type="checkbox" id="Identification-yes" name="Identification" onclick="toggleCheckbox(this);">
+    <label for="Identification-yes">Yes</label>
+    <input type="checkbox" id="Identification-no" name="Identification" onclick="toggleCheckbox(this);">
+    <label for="Identification-no">No</label>
+    - Identification: Should bring an ID with name and one of the following: date of birth, donor ID number, or photo.
+  </div>
+  <div class="criteria-box">
+    <input type="checkbox" id="Donation interval-yes" name="Donation interval" onclick="toggleCheckbox(this);">
+    <label for="Donation interval-yes">Yes</label>
+    <input type="checkbox" id="Donation interval-no" name="Donation interval" onclick="toggleCheckbox(this);">
+    <label for="Donation interval-no">No</label>
+    - Donation interval: Can only donate blood after a duration of eight weeks between previous blood donations.
+  </div>
+  <div class="criteria-box">
+    <input type="checkbox" id="Substance use-yes" name="Substance use" onclick="toggleCheckbox(this);">
+    <label for="Substance use-yes">Yes</label>
+    <input type="checkbox" id="Substance use-no" name="Substance use" onclick="toggleCheckbox(this);">
+    <label for="Substance use-no">No</label>
+    - Substance use: Should not be under the influence of alcohol or recreational drugs at the time of donation.
+  </div>
+  <button onclick="window.location.href='http://127.0.0.1:5000/donormange';" type="button" class = "submit-button">Submit</button>
+</div>
+</form>
+
+<p>For specific requirements in your area, please call 877-258-4825.</p>
+</body>
+</html>

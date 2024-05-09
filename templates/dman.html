@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donor Management</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f8d7da; }
+  .title-bar { background-color: #bd4343; color: white; padding: 10px; text-align: left; font-size: 24px; }
+  .icon-container { display: flex; justify-content: space-around; flex-wrap: wrap; padding: 150px; }
+  .icon { width: 180px; margin: 15px; text-align: center; cursor: pointer; }
+  .icon img { width: 200px; height: 200px; margin-bottom: 10px; }
+  .icon p { color: #dc3545; font-weight: bold; }
+  .icon a { text-decoration: none; color: inherit; text-align: center; }
+</style>
+</head>
+<body>
+<div class="title-bar">Donor Management</div>
+<div class="icon-container">
+  <div class="icon" onclick="window.location.href='add-donor.html';">
+    <img src="/static/AAA.png" alt="Add new donor details">
+    <a href="{{ url_for('adddonorpage')}}"><p>Add new donor details</p></a>
+  </div>
+  <div class="icon" onclick="window.location.href='view-donor.html';">
+    <img src="/static/BBB.png" alt="View existing Donor details">
+    <a href="{{ url_for('viewdonor')}}"><p>View existing Donor details</p></a>
+  </div>
+  <div class="icon" onclick="window.location.href='donation-history.html';">
+    <img src="/static/CCC.png" alt="Donation History">
+    <a href="donation-history.html"><p>Donation History</p></a>
+  </div>
+  <div class="icon" onclick="window.location.href='track-eligibility.html';">
+    <img src="/static/DDD.png" alt="Track eligibility">
+    <a href="{{ url_for('elicri')}}"><p>Track eligibility</p></a>
+  </div>
+  <div class="icon" onclick="window.location.href='new-recipient.html';">
+    <img src="/static/EEE.png" alt="New Recipient">
+    <a href="{{ url_for('addrecpage')}}"><p>New Recipient</p></a>
+  </div>
+  <div class="icon" onclick="window.location.href='recipient-database.html';">
+    <img src="/static/FFF.png" alt="Recipient Database">
+    <a href="{{ url_for('viewrec')}}"><p>Recipient Database</p></a>
+  </div>
+  <div class="icon" onclick="window.location.href='recent-request.html';">
+    <img src="/static/GGG.png" alt="Recent Request">
+    <a href="recent-request.html"><p>Recent Request</p></a>
+  </div>
+  <div class="icon" onclick="window.location.href='static/binv.html';">
+    <img src="/static/HHH.png" alt="Blood Inventory">
+    <p>Blood Inventory</p>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Inventory</title>
+    <style>
+      body {
+        font-family: Montserrat;
+        margin: 0;
+        padding: 0;
+        background-color: #ffcccc;
+      }
+
+      .title-bar {
+        background-color: #bd4343;
+        color: white;
+        padding: 10px;
+        text-align: left;
+        font-size: 24px;
+      }
+
+      .container {
+        margin: 20px 0;
+      }
+
+      .blood-group {
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+	  .blood-group .details { 
+		color: #bd4343; 
+		padding: 10px;
+	  }
+
+      .blood-type {
+        flex: 1;
+        text-align: center;
+      }
+
+      .details {
+        flex: 2;
+        padding: 10px;
+      }
+
+      .details h3 {
+        margin-top: 0;
+      }
+
+      .minimum-level {
+        font-weight: bold;
+      }
+
+      .units {
+        margin: 0;
+      }
+
+      .shortage {
+		color: #FFD700; /* Golden dark yellow color */
+		font-weight: bold;
+		font-size: 18px;
+	  }
+	  .blood-type img {
+		width: 150px; /* Adjust the width as needed */
+		height: 150px; /* Adjust the height as needed */
+	  }
+    </style>
+</head>
+<body>
+    <div class="title-bar">Blood Inventory</div>
+    <div class="title-bar"  ><a href="/"> Home</a></div>
+  
+    <div class="container">
+      <!-- Blood Group A+ -->
+      <div class="blood-group Aplus">
+        <div class="blood-type">
+          <img src="a+.png" alt="Blood Type A+">
+        </div>
+        <div class="details">
+          <h3>Blood Group A+</h3>
+          <p class="minimum-level">Minimum levels:</p>
+          <p class="units">25% (125 ml)</p>
+          <p class="units-available">Units Available: <span id="Aplus-available">0 ml</span></p>
+          <p class="units-used">Units Used: <span id="Aplus-used">0 ml</span></p>
+          <p class="expiration-date">Expiration Date: <span id="Aplus-expiration">[Placeholder for expiration date calculation]</span></p>
+        </div>
+      </div>
+      
+      <!-- Blood Group A- -->
+      <div class="blood-group Aminus">
+        <div class="blood-type">
+          <img src="a-.png" alt="Blood Type A-">
+        </div>
+        <div class="details">
+          <h3>Blood Group A-</h3>
+          <p class="minimum-level">Minimum levels:</p>
+          <p class="units">25% (125 ml)</p>
+          <p class="units-available">Units Available: <span id="Aminus-available">0 ml</span></p>
+          <p class="units-used">Units Used: <span id="Aminus-used">0 ml</span></p>
+          <p class="expiration-date">Expiration Date: <span id="Aminus-expiration">[Placeholder for expiration date calculation]</span></p>
+        </div>
+      </div>
+      
+      <!-- Blood Group B+ -->
+      <div class="blood-group Bplus">
+        <div class="blood-type">
+          <img src="b+.png" alt="Blood Type B+">
+        </div>
+        <div class="details">
+          <h3>Blood Group B+</h3>
+          <p class="minimum-level">Minimum levels:</p>
+          <p class="units">25% (125 ml)</p>
+          <p class="units-available">Units Available: <span id="Bplus-available">0 ml</span></p>
+          <p class="units-used">Units Used: <span id="Bplus-used">0 ml</span></p>
+          <p class="expiration-date">Expiration Date: <span id="Bplus-expiration">[Placeholder for expiration date calculation]</span></p>
+        </div>
+      </div>
+      
+      <!-- Blood Group B- -->
+      <div class="blood-group Bminus">
+        <div class="blood-type">
+          <img src="b-.png" alt="Blood Type B-">
+        </div>
+        <div class="details">
+          <h3>Blood Group B-</h3>
+          <p class="minimum-level">Minimum levels:</p>
+          <p class="units">25% (125 ml)</p>
+          <p class="units-available">Units Available: <span id="Bminus-available">0 ml</span></p>
+          <p class="units-used">Units Used: <span id="Bminus-used">0 ml</span></p>
+          <p class="expiration-date">Expiration Date: <span id="Bminus-expiration">[Placeholder for expiration date calculation]</span></p>
+        </div>
+      </div>
+	  <!-- Blood Group O+ -->
+      <div class="blood-group Oplus">
+        <div class="blood-type">
+          <img src="o+.png" alt="Blood Type O+">
+        </div>
+        <div class="details">
+          <h3>Blood Group O+</h3>
+          <p class="minimum-level">Minimum levels:</p>
+          <p class="units">25% (125 ml)</p>
+          <p class="units-available">Units Available: <span id="Oplus-available">0 ml</span></p>
+          <p class="units-used">Units Used: <span id="Oplus-used">0 ml</span></p>
+          <p class="expiration-date">Expiration Date: <span id="Oplus-expiration">[Placeholder for expiration date calculation]</span></p>
+        </div>
+      </div>
+      
+      <!-- Blood Group O- -->
+      <div class="blood-group Ominus">
+        <div class="blood-type">
+          <img src="o-.png" alt="Blood Type O-">
+        </div>
+        <div class="details">
+          <h3>Blood Group O-</h3>
+          <p class="minimum-level">Minimum levels:</p>
+          <p class="units">25% (125 ml)</p>
+          <p class="units-available">Units Available: <span id="Ominus-available">0 ml</span></p>
+          <p class="units-used">Units Used: <span id="Ominus-used">0 ml</span></p>
+          <p class="expiration-date">Expiration Date: <span id="Ominus-expiration">[Placeholder for expiration date calculation]</span></p>
+        </div>
+      </div>
+      
+      <!-- Blood Group AB+ -->
+      <div class="blood-group ABplus">
+        <div class="blood-type">
+          <img src="ab+.png" alt="Blood Type AB+">
+        </div>
+        <div class="details">
+          <h3>Blood Group AB+</h3>
+          <p class="minimum-level">Minimum levels:</p>
+          <p class="units">25% (125 ml)</p>
+          <p class="units-available">Units Available: <span id="ABplus-available">0 ml</span></p>
+          <p class="units-used">Units Used: <span id="ABplus-used">0 ml</span></p>          
+		  <p class="expiration-date">Expiration Date: <span id="ABplus-expiration">[Placeholder for expiration date calculation]</span></p>
+        </div>
+      </div>
+      
+      <!-- Blood Group AB- -->
+      <div class="blood-group ABminus">
+        <div class="blood-type">
+          <img src="ab-.png" alt="Blood Type AB-">
+        </div>
+        <div class="details">
+          <h3>Blood Group AB-</h3>
+          <p class="minimum-level">Minimum levels:</p>
+          <p class="units">25% (125 ml)</p>
+          <p class="units-available">Units Available: <span id="ABminus-available">0 ml</span></p>
+          <p class="units-used">Units Used: <span id="ABminus-used">0 ml</span></p>
+          <p class="expiration-date">Expiration Date: <span id="ABminus-expiration">[Placeholder for expiration date calculation]</span></p>
+        </div>
+      </div>
+      
+      <!-- Repeat similar structure for other blood groups -->
+    </div>
+    <script>
+      // Function to update blood inventory details with actual data
+      function updateBloodInventory() {
+        // Placeholder data from the bar graph page
+        const data = {
+          labels: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'],
+          datasets: [{
+            label: 'Blood Inventory Levels',
+            data: [50, 30, 70, 20, 60, 10, 80, 40], // Example data
+            backgroundColor: 'rgba(139, 0, 0, 0.5)', // Pale dark red background
+            borderColor: 'rgba(139, 0, 0, 1)', // Dark red border
+            borderWidth: 1
+          }]
+        };
+
+        const bloodInventoryData = {
+          Aplus: { unitsAvailable: data.datasets[0].data[0], unitsUsed: 100 - data.datasets[0].data[0] },
+          Aminus: { unitsAvailable: data.datasets[0].data[1], unitsUsed: 100 - data.datasets[0].data[1] },
+          Bplus: { unitsAvailable: data.datasets[0].data[2], unitsUsed: 100 - data.datasets[0].data[2] },
+          Bminus: { unitsAvailable: data.datasets[0].data[3], unitsUsed: 100 - data.datasets[0].data[3] },
+          ABplus: { unitsAvailable: data.datasets[0].data[4], unitsUsed: 100 - data.datasets[0].data[4] },
+          ABminus: { unitsAvailable: data.datasets[0].data[5], unitsUsed: 100 - data.datasets[0].data[5] },
+          Oplus: { unitsAvailable: data.datasets[0].data[6], unitsUsed: 100 - data.datasets[0].data[6] },
+          Ominus: { unitsAvailable: data.datasets[0].data[7], unitsUsed: 100 - data.datasets[0].data[7] }
+        };
+
+        // Update details for each blood group
+        Object.keys(bloodInventoryData).forEach(bloodGroup => {
+          const { unitsAvailable, unitsUsed } = bloodInventoryData[bloodGroup];
+          document.getElementById(`${bloodGroup}-available`).textContent = `${unitsAvailable} ml`;
+          document.getElementById(`${bloodGroup}-used`).textContent = `${unitsUsed} ml`;
+          document.getElementById(`${bloodGroup}-expiration`).textContent = calculateExpirationDate();
+		  
+        if (unitsAvailable < 25) {
+            document.getElementById(`${bloodGroup}-available`).textContent = `${unitsAvailable} ml - Low supply!`;
+        }
+		
+        });
+      }
+      
+      // Placeholder function to calculate expiration date (3 months from current date)
+      function calculateExpirationDate() {
+        const currentDate = new Date();
+        currentDate.setMonth(currentDate.getMonth() + 3);
+        return currentDate.toLocaleDateString();
+      }
+
+      // Call the updateBloodInventory function when the page loads
+      window.onload = updateBloodInventory;
+    </script>
+</body>
+</html>

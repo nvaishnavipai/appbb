@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donors Database</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 0px;
+        }
+
+        th, td {
+            border: 1px solid #bd4343;
+            text-align: left;
+            padding: 8px;
+            color: #bd4343;
+        }
+
+        th {
+            background-color: #fcfcfc;
+        }
+
+        .title-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color:#fcfcfc;
+            background-color: #bd4343;
+            margin-bottom: 5px;
+        }
+
+        .title-bar-left {
+            margin-right: auto;
+        }
+
+        .search-form {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .action-btn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 3px;
+        border: white;
+        border-radius: 3px;
+        cursor: pointer;
+        margin: 5px;
+        flex-grow: 1;
+        }
+        .delete-btn-wrapper {
+        flex-grow: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="title-bar"><h1>Blood Donors Database</h1></div>
+    <div class="title-bar"  ><a href="/" color: white> Blood Inventory</a>
+        <form action="{{ url_for('search') }}" method="POST" name="recpsearch">  
+            <input type="text" name="search">  
+            <input type="hidden" name="type" value="sample_data">
+            <input type="submit" value="Filter" class="search-btn">  
+        </form> 
+    </div>
+    <script>
+        function renderTable() {
+  var table = document.getElementById('data-table');
+  // Clear existing table rows except the header
+  table.innerHTML = table.rows[0].outerHTML; // Use outerHTML to preserve the header row
+  // Populate table with data
+  data.forEach(function(item, index) {
+    var row = table.insertRow();
+    Object.values(item).forEach(function(value) {
+      var cell = row.insertCell();
+      cell.textContent = value;
+    });
+    // Add action buttons
+    var actionCell = row.insertCell();
+    actionCell.innerHTML = '<button class="action-btn delete-btn">Delete</button>' +
+                           '<button class="action-btn edit-btn">Edit</button>' +
+                           '<button class="action-btn update-btn">Update</button>';
+  });
+}
+
+// Function to handle delete action
+function handleDelete(event) {
+    alert("Hi");
+  var rowIndex = event.target.closest('tr').rowIndex;
+  data.splice(rowIndex - 1, 1); // Subtract 1 to account for the header row
+  renderTable();
+}
+
+// Function to handle edit action
+function handleEdit(event) {
+  var rowIndex = event.target.closest('tr').rowIndex;
+  // Example: Get the data of the row and populate a form for editing
+  var rowData = data[rowIndex - 1]; // Subtract 1 to account for the header row
+  console.log('Edit data:', rowData);
+}
+
+// Function to handle update action
+function handleUpdate(event) {
+  var rowIndex = event.target.closest('tr').rowIndex;
+  // Example: Update the data in the array and re-render the table
+  var newData = { /* Updated data object */ };
+  data[rowIndex - 1] = newData; // Subtract 1 to account for the header row
+  renderTable();
+}
+
+// Call the function to render the table initially
+renderTable();
+
+// Add event listeners to action buttons
+document.querySelectorAll('.delete-btn').forEach(button => {
+    button.addEventListener('click', handleDelete);
+});
+
+document.querySelectorAll('.edit-btn').forEach(button => {
+    button.addEventListener('click', handleEdit);
+});
+
+document.querySelectorAll('.update-btn').forEach(button => {
+    button.addEventListener('click', handleUpdate);
+});
+</script>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Country</th>
+            <th>Blood Group</th>
+            <th>Gender</th>
+            <th>Actions</th>
+          </tr>
+        {% for row in data %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[3] }}</td>
+                <td>{{ row[4] }}</td>
+                <td>{{ row[5] }}</td>
+                <td>{{ row[6] }}</td>
+                <td>{{ row[7] }}</td>
+                <td >
+                    <form action="{{ url_for('delete',id=row[0]) }}"  name="donordelete">  
+                    <input type="submit" value="Delete" class="search-btn">  
+                    </form> 
+                    <button class="action-btn edit-btn">Edit</button>
+                    <button class="action-btn update-btn">Update</button>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
